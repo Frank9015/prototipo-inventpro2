@@ -129,10 +129,10 @@
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <span class="text-gray-500 sm:text-sm">$</span>
                             </div>
-                            <input type="number" step="0.01" id="precio" name="precio" placeholder="Ej: 49.99" required
+                            <input type="number" step="0.01" id="precio" name="precio" placeholder="Ej: 49.990" required
                                 class="block w-full pl-7 pr-12 border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-sm p-2">
                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                <span class="text-gray-500 sm:text-sm" id="price-currency">USD</span>
+                                <span class="text-gray-500 sm:text-sm" id="price-currency">CLP</span>
                             </div>
                         </div>
                     </div>
@@ -167,11 +167,12 @@
                 </div>
 
                 <div>
-                    <label for="estado" class="block text-sm font-medium text-gray-700">Estado <span class="text-red-500">*</span></label>
-                    <select id="estado" name="estado" required
+                    <label for="estado-stock" class="block text-sm font-medium text-gray-700">Estado del stock <span class="text-red-500">*</span></label>
+                    <select id="estado-stock" name="estado-stock" required
                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                        <option value="activo">Activo</option>
-                        <option value="inactivo">Inactivo</option>
+                        <option value="en-stock">En stock</option>
+                        <option value="stock-bajo">Stock bajo</option>
+                        <option value="agotado">Agotado</option>
                     </select>
                 </div>
 
