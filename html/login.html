@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - InventPro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <!-- Contenedor principal -->
+  <div class="bg-white shadow-lg rounded-2xl w-full max-w-md p-8">
+    <!-- Logo -->
+    <div class="flex justify-center mb-6">
+      <img src="https://dummyimage.com/50x50/004aad/ffffff.png&text=IP" alt="InventPro" class="w-12 h-12 rounded-full"/>
+    </div>
+
+    <!-- Título -->
+    <h1 class="text-2xl font-bold text-center mb-2">Bienvenido de vuelta</h1>
+    <p class="text-sm text-gray-500 text-center mb-6">Por favor, inicie sesión</p>
+
+    <!-- Formulario -->
+    <form id="loginForm" class="space-y-4">
+      <!-- Correo -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+        <input type="email" id="correo" required
+               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"/>
+      </div>
+
+      <!-- Contraseña -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input type="password" id="password" required minlength="6"
+               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"/>
+      </div>
+
+      <!-- Opciones -->
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" id="rememberMe" class="rounded border-gray-300">
+          <span class="text-gray-600">Recuérdame</span>
+        </label>
+        <a href="forgot-password.html" class="text-blue-600 hover:underline">Olvidé mi contraseña</a>
+      </div>
+
+      <!-- Botón -->
+      <button type="submit"
+              class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-2 rounded-lg font-semibold shadow hover:opacity-90">
+        Iniciar sesión
+      </button>
+    </form>
+
+    <!-- Crear cuenta -->
+    <p class="mt-6 text-center text-sm text-gray-600">
+      ¿No tienes una cuenta?
+      <a href="register.html" class="text-blue-600 font-medium hover:underline">Regístrate</a>
+    </p>
+  </div>
+
+  <!-- Script JS -->
+  <script>
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const correo = document.getElementById("correo").value;
+      const password = document.getElementById("password").value;
+
+      if (correo === "" || password === "") {
+        alert("⚠️ Por favor complete todos los campos.");
+        return;
+      }
+
+      // Simulación de login
+      alert("✅ Bienvenido: " + correo);
+
+      // Aquí iría la lógica real para enviar al backend (fetch/axios)
+    });
+  </script>
+</body>
+</html>

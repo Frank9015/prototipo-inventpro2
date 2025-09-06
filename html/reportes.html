@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - Invent Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos para el scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        /* Estilo para el modal */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans antialiased flex min-h-screen">
+
+    <aside class="w-64 bg-white shadow-lg h-screen flex flex-col fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-200 ease-in-out" id="sidebar">
+        <div class="p-6 border-b flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <h1 class="text-2xl font-bold text-blue-600">Invent Pro</h1>
+        </div>
+        <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+            <a href="dashboard.html" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
+                Dashboard
+            </a>
+            <a href="productos.html" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                Gestión de Productos
+            </a>
+            <a href="proveedores.html" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /></svg>
+                Gestión de Proveedores
+            </a>
+            <a href="clientes.html" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM10 18a5 5 0 002.553-9.052A3.001 3.001 0 0116 13c0 1.571-.741 2.92-1.898 3.865L18 18.5a.5.5 0 00.5.5h.5a.5.5 0 00.5-.5V19a.5.5 0 00-.5-.5H18zm-2 0V19a.5.5 0 00.5.5h.5a.5.5 0 00.5-.5V18z" /></svg>
+                Gestión de Clientes
+            </a>
+            <a href="usuarios.html" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+                Gestión de Usuarios
+            </a>
+            <a href="ordenes.html" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.586l-4.5-4.5L5 15.414V13a2 2 0 012-2h4a1 1 0 110 2H7v-2h4v-2H7v-2h4v-2H5a2 2 0 01-2-2V5z" clip-rule="evenodd" /></svg>
+                Órdenes de Compra
+            </a>
+            <a href="inventario.html" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                Inventario Manual
+            </a>
+            <a href="reportes.html" class="flex items-center gap-2 p-2 rounded-lg bg-blue-50 text-blue-600 font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m-6 0h6" /></svg>
+                Reportes
+            </a>
+            <a href="configuracion.html" class="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                Configuración
+            </a>
+        </nav>
+        <div class="p-4 border-t">
+            <button onclick="cerrarSesion()" class="w-full px-4 py-2 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                Cerrar sesión
+            </button>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-6 md:p-8 overflow-y-auto">
+        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+            <div>
+                <h2 class="text-2xl font-semibold text-gray-800">Gestión de Reportes 📊</h2>
+                <p class="text-sm text-gray-500">Crea, gestiona y descarga reportes personalizados para el análisis de datos.</p>
+            </div>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-300 hover:border-blue-500 transition-all cursor-pointer" onclick="abrirModal('crear')">
+                <div class="p-3 bg-blue-100 text-blue-600 rounded-full mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Crear Nuevo Reporte</h3>
+                <p class="text-sm text-gray-500">Configura un reporte personalizado con filtros avanzados.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center justify-center text-center">
+                <div class="p-3 bg-gray-100 text-gray-600 rounded-full mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Buscar Reportes Existentes</h3>
+                <p class="text-sm text-gray-500 mb-4">Encuentra tus reportes por nombre, tipo o creador.</p>
+                <input type="text" placeholder="Buscar reporte..." class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Mis Reportes Creados</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-5 rounded-xl shadow-md flex flex-col">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-800">Ventas Trimestrales Q2</h4>
+                        <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Activo</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2 flex-1">Análisis de ventas del segundo trimestre.</p>
+                    <div class="text-xs text-gray-500 mb-3">
+                        <p><strong>Tipo:</strong> Ventas</p>
+                        <p><strong>Formato:</strong> PDF</p>
+                        <p><strong>Creador:</strong> Admin Admin</p>
+                    </div>
+                    <div class="flex justify-end gap-2 mt-auto">
+                        <button onclick="ejecutarReporte('Ventas Trimestrales Q2')" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-md hover:bg-blue-200 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                            Ejecutar
+                        </button>
+                        <button onclick="abrirModal('editar', { nombre: 'Ventas Trimestrales Q2', tipo: 'Ventas', formato: 'PDF', estado: 'Activo', descripcion: 'Análisis de ventas del segundo trimestre.', filtros_fechas: 'Últimos 90 días', filtros_categorias: '' })" class="inline-flex items-center px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-md hover:bg-indigo-200 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /></svg>
+                            Editar
+                        </button>
+                        <button onclick="eliminarReporte('Ventas Trimestrales Q2')" class="inline-flex items-center px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-md hover:bg-red-200 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow-md flex flex-col">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="text-lg font-semibold text-gray-800">Productos con Poco Stock</h4>
+                        <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Borrador</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2 flex-1">Listado de productos bajo el stock mínimo de seguridad.</p>
+                    <div class="text-xs text-gray-500 mb-3">
+                        <p><strong>Tipo:</strong> Stock</p>
+                        <p><strong>Formato:</strong> XLS</p>
+                        <p><strong>Creador:</strong> Admin Admin</p>
+                    </div>
+                    <div class="flex justify-end gap-2 mt-auto">
+                        <button onclick="ejecutarReporte('Productos con Poco Stock')" class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-md hover:bg-blue-200 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                            Ejecutar
+                        </button>
+                        <button onclick="abrirModal('editar', { nombre: 'Productos con Poco Stock', tipo: 'Stock', formato: 'XLS', estado: 'Borrador', descripcion: 'Listado de productos bajo el stock mínimo de seguridad.', filtros_fechas: 'Siempre', filtros_categorias: 'Todos' })" class="inline-flex items-center px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-md hover:bg-indigo-200 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /></svg>
+                            Editar
+                        </button>
+                        <button onclick="eliminarReporte('Productos con Poco Stock')" class="inline-flex items-center px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-md hover:bg-red-200 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+
+                </div>
+        </section>
+    </main>
+
+    <div id="reporte-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-2/3 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <h3 id="modal-title" class="text-lg leading-6 font-medium text-gray-900 mb-4">Crear Nuevo Reporte</h3>
+                <div class="px-7 py-3">
+                    <form id="reporte-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="reporte-nombre" class="block text-sm font-medium text-gray-700 text-left">Nombre del Reporte</label>
+                                <input type="text" id="reporte-nombre" name="nombre" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Ej: Inventario por Categoría">
+                            </div>
+                            <div>
+                                <label for="reporte-tipo" class="block text-sm font-medium text-gray-700 text-left">Tipo de Reporte</label>
+                                <select id="reporte-tipo" name="tipo" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                    <option value="ventas">Ventas</option>
+                                    <option value="stock">Stock</option>
+                                    <option value="clientes">Clientes</option>
+                                    <option value="proveedores">Proveedores</option>
+                                    <option value="movimientos">Movimientos</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="reporte-descripcion" class="block text-sm font-medium text-gray-700 text-left">Descripción Breve</label>
+                            <textarea id="reporte-descripcion" name="descripcion" rows="2" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Describe brevemente el propósito del reporte."></textarea>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="reporte-filtro-fechas" class="block text-sm font-medium text-gray-700 text-left">Filtro: Rango de Fechas</label>
+                                <input type="text" id="reporte-filtro-fechas" name="filtros_fechas" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Ej: Últimos 30 días">
+                            </div>
+                            <div>
+                                <label for="reporte-filtro-categorias" class="block text-sm font-medium text-gray-700 text-left">Filtro: Categorías</label>
+                                <input type="text" id="reporte-filtro-categorias" name="filtros_categorias" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Ej: Electrónica, Muebles">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="reporte-formato" class="block text-sm font-medium text-gray-700 text-left">Formato de Salida</label>
+                                <select id="reporte-formato" name="formato" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                    <option value="pdf">PDF</option>
+                                    <option value="xls">XLS (Excel)</option>
+                                    <option value="csv">CSV</option>
+                                    <option value="dashboard">Dashboard</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="reporte-estado" class="block text-sm font-medium text-gray-700 text-left">Estado</label>
+                                <select id="reporte-estado" name="estado" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                    <option value="activo">Activo</option>
+                                    <option value="borrador">Borrador</option>
+                                    <option value="archivado">Archivado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="reporte-metodo-entrega" class="block text-sm font-medium text-gray-700 text-left">Método de Entrega</label>
+                            <select id="reporte-metodo-entrega" name="metodo_entrega" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="descarga">Descarga Inmediata</option>
+                                <option value="email">Enviar por Email</option>
+                                <option value="compartido">Compartir Link</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-end items-center px-4 py-3">
+                            <button type="button" onclick="cerrarModal()" class="px-4 py-2 bg-gray-300 text-gray-800 font-medium rounded-lg hover:bg-gray-400 transition mr-2">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                                Guardar Reporte
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function cerrarSesion() {
+            const confirmar = confirm("¿Estás seguro de que deseas cerrar sesión?");
+            if (confirmar) {
+                window.location.href = "login.html";
+            }
+        }
+
+        const modal = document.getElementById('reporte-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const reporteForm = document.getElementById('reporte-form');
+
+        function abrirModal(modo, reporte = null) {
+            reporteForm.reset(); // Limpiar el formulario al abrir el modal
+
+            if (modo === 'crear') {
+                modalTitle.innerText = 'Crear Nuevo Reporte';
+            } else if (modo === 'editar' && reporte) {
+                modalTitle.innerText = 'Editar Reporte: ' + reporte.nombre;
+                // Precargar los datos del reporte en el formulario
+                document.getElementById('reporte-nombre').value = reporte.nombre;
+                document.getElementById('reporte-descripcion').value = reporte.descripcion;
+                document.getElementById('reporte-tipo').value = reporte.tipo;
+                document.getElementById('reporte-filtro-fechas').value = reporte.filtros_fechas;
+                document.getElementById('reporte-filtro-categorias').value = reporte.filtros_categorias;
+                document.getElementById('reporte-formato').value = reporte.formato;
+                document.getElementById('reporte-estado').value = reporte.estado;
+                // No tenemos método de entrega en el objeto de ejemplo, así que lo dejamos por defecto o añade si lo manejas
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            modal.classList.add('hidden');
+        }
+
+        function ejecutarReporte(nombreReporte) {
+            alert('Ejecutando y descargando el reporte: ' + nombreReporte + '.');
+            // Aquí iría la lógica para generar y descargar el archivo real
+        }
+        
+        function eliminarReporte(nombreReporte) {
+            const confirmar = confirm("¿Estás seguro de que quieres eliminar el reporte: " + nombreReporte + "?");
+            if (confirmar) {
+                alert('Reporte "' + nombreReporte + '" eliminado.');
+                // Lógica para eliminar el reporte de la lista
+            }
+        }
+
+        // Cierra el modal si se hace clic fuera de él
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                cerrarModal();
+            }
+        }
+
+        // Manejar el envío del formulario del modal (simulado)
+        reporteForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Reporte guardado/actualizado correctamente.');
+            cerrarModal();
+            // Aquí iría la lógica para guardar los datos del formulario en el backend
+        });
+    </script>
+</body>
+</html>
